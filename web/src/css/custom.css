@@ -1335,3 +1335,27 @@ h4.method-list-item-label .method-list-item-validation {
 details summary:hover {
   cursor: pointer;
 }
+
+.dbk-editor-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;  
+}
+.dbk-editor-wrapper > .run-btn {
+  margin-bottom: 4px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  align-self: flex-start;
+  background: #363636;  
+  border: none;
+  color: rgb(233, 233, 233);
+  cursor: pointer;
+}
+
+.dbk-editor-wrapper > .run-btn:hover {
+  background: #262626;
+}
+
+.dbk-editor-wrapper .cm-editor .cm-line {
+  font-size: 11.52px;
+}

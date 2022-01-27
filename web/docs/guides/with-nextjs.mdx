@@ -85,7 +85,7 @@ values={[
 <TabItem value="SQL">
 
 <Editor
-  sql={snippets.sql}
+  sql={snippets.sqlSetup}
 />
 
 </TabItem>
@@ -214,6 +214,11 @@ And then open the browser to [localhost:3000](http://localhost:3000) and you sho
 <Iframe
   url="https://3000-default_9c03f124-1589abde1b94.o.usedevbook.com"
   height={350}
+/>
+
+When you try to login a new row in the Database is added. Run the following SQL query to print all of registered users.
+<Editor
+  sql={snippets.sqlProfiles}
 />
 
 <!--![Supabase User demo](/img/supabase-react-demo.png)-->

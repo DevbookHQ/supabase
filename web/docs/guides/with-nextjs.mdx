@@ -86,6 +86,7 @@ values={[
 
 <Editor
   sql={snippets.sqlSetup}
+  language={Language.sql}
 />
 
 </TabItem>
@@ -153,9 +154,8 @@ These variables will be exposed on the browser, and that's completely fine since
 
 
 <Editor
-  filepath="utils/supabaseClient.js"
+  filepath="/utils/supabaseClient.js"
   language={Language.js}
-  initialCode={snippets.supabaseClient}
 />
 
 <br/>
@@ -169,9 +169,8 @@ Let's set up a React component to manage logins and sign ups.
 We'll use Magic Links, so users can sign in with their email without using passwords.
 
 <Editor
-  filepath="components/Auth.js"
+  filepath="/components/Auth.js"
   language={Language.jsx}
-  initialCode={snippets.componentsAuth}
 />
 
 ### Account page
@@ -182,8 +181,7 @@ Let's create a new component for that called `Account.js`.
 
 <Editor
   language={Language.jsx}
-  filepath="components/Account.js"
-  initialCode={snippets.componentsAccount}
+  filepath="/components/Account.js"  
 />
 
 
@@ -193,32 +191,28 @@ Now that we have all the components in place, let's update `pages/index.js`:
 
 <Editor
   language={Language.jsx}
-  filepath="pages/index.js"
-  initialCode={snippets.pagesIndex}
+  filepath="/pages/index.js"
 />
 
 <br/>
 
 Once that's done, run this in a terminal window:
 
-<Editor
-  language={Language.sh}
-  initialCode="npm run dev"
-/>
-<Output
-  stdout={['> dev', '> next dev', 'ready - started server on 0.0.0.0:3000, url: http://localhost:3000', 'info  - Loaded env from /Users/vasekmlejnsky/Developer/supabase-nextjs/.env', 'event - compiled client and server successfully in 464 ms (125 modules)']}
-/>
+```sh
+npm run dev
+```
 
 And then open the browser to [localhost:3000](http://localhost:3000) and you should see the completed app.
 
 <Iframe
-  url="https://3000-default_9c03f124-1589abde1b94.o.usedevbook.com"
+  url="https://3000-default_9c03f124-0dfcd26efae5.o.usedevbook.com"
   height={350}
 />
 
 When you try to login a new row in the Database is added. Run the following SQL query to print all of registered users.
 <Editor
   sql={snippets.sqlProfiles}
+  language={Language.sql}
 />
 
 <!--![Supabase User demo](/img/supabase-react-demo.png)-->

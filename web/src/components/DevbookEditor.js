@@ -58,9 +58,9 @@ export default function Editor({
 
   return (
     <div className="dbk-editor-wrapper">      
-      {!initialSQL && !initialCode && <span>Loading</span>}
-      {initialSQL && <button className="run-btn" onClick={run}>Run</button>}
-      {initialSQL && (
+      {!sql && !code && <span>Loading</span>}
+      {sql && <button className="run-btn" onClick={run}>Run</button>}
+      {sql && (
         <>
           <DevbookEditor
             initialCode={initialSQL}

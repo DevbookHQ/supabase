@@ -85,7 +85,7 @@ values={[
 <TabItem value="SQL">
 
 <Editor
-  sql={snippets.sqlSetup}
+  initialSQL={snippets.sqlSetup}
   language={Language.sql}
 />
 
@@ -205,13 +205,13 @@ npm run dev
 And then open the browser to [localhost:3000](http://localhost:3000) and you should see the completed app.
 
 <Iframe
-  url="https://3000-default_9c03f124-0dfcd26efae5.o.usedevbook.com"
+  url={`https://3000-default_9c03f124-${window.sessionStorage.getItem('dbk_sdk_session_id')}.o.usedevbook.com`}
   height={350}
 />
 
 When you try to login a new row in the Database is added. Run the following SQL query to print all of registered users.
 <Editor
-  sql={snippets.sqlProfiles}
+  initialSQL={snippets.sqlProfiles}
   language={Language.sql}
 />
 

@@ -1,6 +1,7 @@
 import React, {
   useState,
   useEffect,
+  useCallback,
 } from 'react'
 
 import {
@@ -18,10 +19,11 @@ export { Language } from '@devbookhq/ui'
 export default function Editor({
   initialCode,
   language,
-  sql,
+  initialSQL,
   filepath,
 }) {
   const [code, setCode] = useState('')
+  const [sql, setSQL] = useState(initialSQL)
   const { runCmd, stdout, stderr, fs, status } = useDevbook({ debug: true, env: Env.Supabase })
   
   // fs?.get('/components/Auth.js').then(content => console.log({ content }))
@@ -32,33 +34,38 @@ export default function Editor({
     runCmd(cmd)
   }
 
-  function updateCode(content) {
-    setCode(content)
+  const updateSQL = useCallback(content => {
+    setSQL(content)
+  }, [setSQL])
+  
+  const updateCode = useCallback(content => {
     fs?.write(filepath, content)
-  }
-
-  useEffect(function getFileContent() {
-    if (!fs) return
-    if (status !== DevbookStatus.Connected) return
-    if (!filepath) return
-
-    console.log('RETRIEVING FILE')
-    fs.get(filepath).then(content => { 
-      console.log('FILE CONTENT', { content })
-      setCode(content)
-    })
+  }, [fs])
+  
+  useEffect(() => {
+    async function init() {
+      if (!fs) return
+      if (status !== DevbookStatus.Connected) return
+      if (!filepath) return
+  
+      console.log('RETRIEVING FILE')
+      const fileContent = await fs.get(filepath)
+      console.log('FILE CONTENT', { fileContent })
+      setCode(fileContent)      
+    }
+    init()
   }, [status, fs, filepath])
 
   return (
     <div className="dbk-editor-wrapper">      
-      {!sql && !code && <span>Loading</span>}
-      {sql && <button className="run-btn" onClick={run}>Run</button>}
-      {sql && (
+      {!initialSQL && !initialCode && <span>Loading</span>}
+      {initialSQL && <button className="run-btn" onClick={run}>Run</button>}
+      {initialSQL && (
         <>
           <DevbookEditor
-            initialCode={sql}
+            initialCode={initialSQL}
             language={language}
-            onChange={updateCode}
+            onChange={updateSQL}
             filepath={filepath}
           />
           {(stdout.length > 0 || stderr.length > 0) && (

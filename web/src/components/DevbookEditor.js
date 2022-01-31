@@ -9,15 +9,14 @@ import {
   DevbookStatus,
   Env,
 } from '@devbookhq/sdk'
-import { 
-  Editor as DevbookEditor,   
+import {
+  Editor as DevbookEditor,
   Output,
 } from '@devbookhq/ui'
 
 export { Language } from '@devbookhq/ui'
 
 export default function Editor({
-  initialCode,
   language,
   initialSQL,
   filepath,
@@ -25,7 +24,7 @@ export default function Editor({
   const [code, setCode] = useState('')
   const [sql, setSQL] = useState(initialSQL)
   const { runCmd, stdout, stderr, fs, status } = useDevbook({ debug: true, env: Env.Supabase })
-  
+
   // fs?.get('/components/Auth.js').then(content => console.log({ content }))
 
   function run() {
@@ -37,36 +36,36 @@ export default function Editor({
   const updateSQL = useCallback(content => {
     setSQL(content)
   }, [setSQL])
-  
+
   const updateCode = useCallback(content => {
     fs?.write(filepath, content)
   }, [fs])
-  
+
   useEffect(() => {
     async function init() {
       if (!fs) return
       if (status !== DevbookStatus.Connected) return
       if (!filepath) return
-  
+
       console.log('RETRIEVING FILE')
       const fileContent = await fs.get(filepath)
       console.log('FILE CONTENT', { fileContent })
-      setCode(fileContent)      
+      setCode(fileContent)
     }
     init()
   }, [status, fs, filepath])
 
   return (
-    <div className="dbk-editor-wrapper">      
+    <div className="dbk-editor-wrapper">
       {!sql && !code && <span>Loading</span>}
       {sql && <button className="run-btn" onClick={run}>Run</button>}
       {sql && (
         <>
           <DevbookEditor
-            initialCode={initialSQL}
-            language={language}
-            onChange={updateSQL}
             filepath={filepath}
+            language={language}
+            initialContent={initialSQL}
+            onContentChange={updateSQL}
           />
           {(stdout.length > 0 || stderr.length > 0) && (
             <Output
@@ -76,12 +75,12 @@ export default function Editor({
           )}
         </>
       )}
-      {code && 
+      {code &&
         <DevbookEditor
-          initialCode={code}
-          language={language}
-          onChange={updateCode}
           filepath={filepath}
+          language={language}
+          initialContent={code}
+          onContentChange={updateCode}
         />
       }
     </div>

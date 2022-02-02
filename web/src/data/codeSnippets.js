@@ -61,7 +61,7 @@ export default function Auth() {
 export const componentsAccount = `import { useState, useEffect } from 'react'
 import { supabase } from '../utils/supabaseClient'
 
-export default function Account({ session }) {
+export default function Acc4ount({ session }) {
   const [loading, setLoading] = useState(true)
   const [username, setUsername] = useState(null)
   const [website, setWebsite] = useState(null)

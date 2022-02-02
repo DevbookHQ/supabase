@@ -14,7 +14,7 @@
     "gen:postgres": "ts-node ReferenceGenerator.ts -o docs/reference/postgres spec/postgres.yml"
   },
   "dependencies": {
-    "@devbookhq/sdk": "^1.0.5",
+    "@devbookhq/sdk": "^1.0.6",
     "@devbookhq/ui": "^1.0.19",
     "@docusaurus/core": "^2.0.0-beta.6",
     "@docusaurus/preset-classic": "^2.0.0-beta.6",

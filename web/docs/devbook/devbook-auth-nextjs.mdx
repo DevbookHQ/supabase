@@ -1,0 +1,106 @@
+---
+id: devbook-auth-nextjs
+title: "Next.js Auth Tutorial"
+description: Learn how to use Supabase Auth in your Next App.
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Editor, { Language } from '../../src/components/DevbookVMFileEditor';
+import File from '../../src/components/DevbookVMFile';
+import Iframe from '../../src/components/DevbookIframe';
+import Shell from '../../src/components/DevbookShell';
+import * as snippets from '../../src/data/devbookTutorialCodeSnippets';
+
+
+<File
+  filename="/src/utils/initSupabase.js"
+  code={snippets.utilsInitSupabase}
+/>
+<File 
+  filename="/src/pages/api/getUser.js"
+  code={snippets.pagesAPIGetUser}
+/>
+<File 
+  filename="/src/pages/api/auth.js"
+  code={snippets.pagesAPIAuth}
+/>
+<File 
+  filename="/src/pages/profile.js"
+  code={snippets.pagesProfile}
+/>
+<File 
+  filename="/src/pages/index.js"
+  code={snippets.pagesIndex}
+/>
+<File 
+  filename="/src/pages/_app.js"
+  code={snippets.pagesApp}
+/>
+
+## Intro 
+
+By the end of this guide you'll have an app which allows users to login and update some basic profile details:
+
+## Project set up
+
+Before we start building we're going to set up our Database and API. This is as simple as starting a new Project in Supabase 
+and then creating a "schema" inside the database.
+
+### Create a project 
+
+1. Go to [app.supabase.io](https://app.supabase.io).
+1. Click on "New Project".
+1. Enter your project details.
+1. Wait for the new database to launch.
+
+
+### Set up the database schema
+
+Now we are going to set up the database schema. We can use the "User Management Starter" quickstart in the SQL Editor, 
+or you can just copy/paste the SQL from below and run it yourself.
+
+<Tabs
+defaultValue="UI"
+values={[
+  {label: 'UI', value: 'UI'},
+  {label: 'SQL', value: 'SQL'},
+]}>
+<TabItem value="UI">
+
+```sh
+1. Go to the "SQL" section.
+2. Click "User Management Starter".
+3. Click "Run".
+```
+
+// Init SQL db with psql command?
+
+
+// Connect to the supabase project -> fill env vars in the snippets (can we automate this?)
+<File
+  filename="/src/utils/initSupabase.js"
+  code={snippets.utilsInitSupabase}
+/>
+
+
+
+### Install project dependencies
+
+// Make this automatic?
+<Shell 
+  command="npm install @supabase/supabase-js\nnpm install @supabase/ui"
+/>
+
+
+### 
+
+// Use <Editor/> to show code and describe important parts of the implementation
+// 
+
+
+// TODO: Fix iframe — connection error before the env’s running process is ready
+<Iframe
+  port={3000}
+/>
+// Add nextjs server output so we can see error when we edit code in the snippets - maybe we want to add this output globally, to every editor, or to iframe?

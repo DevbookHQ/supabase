@@ -39,6 +39,14 @@ module.exports = {
   docs: [
     {
       type: 'category',
+      label: 'Devbook',
+      items: [
+        'devbook/devbook-auth-nextjs',
+      ],
+      collapsed: false,
+    },
+    {
+      type: 'category',
       label: 'Overview',
       items: [
         'about',

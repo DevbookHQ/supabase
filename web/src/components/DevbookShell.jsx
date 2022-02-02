@@ -1,11 +1,13 @@
 import React, {
   useState,
   useCallback,
+  useEffect,
 } from 'react'
 
 import {
   useDevbook,
   Env,
+  DevbookStatus,
 } from '@devbookhq/sdk'
 import {
   Language,
@@ -17,13 +19,20 @@ export { Language } from '@devbookhq/ui'
 
 export default function DevbookShell({
   command: initialCommand,
+  autorun = false,
 }) {
   const [command, setCommand] = useState(initialCommand)
-  const { runCmd, stdout, stderr } = useDevbook({ debug: true, env: Env.NextJS })
+  const { runCmd, stdout, stderr, status } = useDevbook({ debug: true, env: Env.NextJS })
 
-  function run() {
+  const run = useCallback(() => {
     runCmd(command)
-  }
+  }, [runCmd, command])
+
+  useEffect(() => {
+    if (!autorun) return
+    if (status !== DevbookStatus.Connected) return
+    run()
+  }, [autorun, status, run])
 
   const updateCommand = useCallback(content => {
     setCommand(content)

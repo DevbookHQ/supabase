@@ -60,24 +60,13 @@ and then creating a "schema" inside the database.
 Now we are going to set up the database schema. We can use the "User Management Starter" quickstart in the SQL Editor, 
 or you can just copy/paste the SQL from below and run it yourself.
 
-<Tabs
-defaultValue="UI"
-values={[
-  {label: 'UI', value: 'UI'},
-  {label: 'SQL', value: 'SQL'},
-]}>
-<TabItem value="UI">
-
-```sh
-1. Go to the "SQL" section.
-2. Click "User Management Starter".
-3. Click "Run".
-```
-
-// Init SQL db with psql command?
 
 
-// Connect to the supabase project -> fill env vars in the snippets (can we automate this?)
+<!-- Init SQL db with psql command? -->
+
+
+<!-- Connect to the supabase project -> fill env vars in the snippets (can we automate this?) -->
+
 <File
   filename="/src/utils/initSupabase.js"
   code={snippets.utilsInitSupabase}
@@ -87,20 +76,23 @@ values={[
 
 ### Install project dependencies
 
-// Make this automatic?
+<!-- Make this automatic? -->
+<!-- Waiting too long for results - add loading indicator for exit command -->
 <Shell 
-  command="npm install @supabase/supabase-js\nnpm install @supabase/ui"
+  command={"npm install @supabase/supabase-js\nnpm install @supabase/ui"}
 />
 
 
-### 
+### Content
 
-// Use <Editor/> to show code and describe important parts of the implementation
-// 
+<!-- Use  to show code and describe important parts of the implementation -->
+<Editor
+  filename=""
+/>
 
 
-// TODO: Fix iframe — connection error before the env’s running process is ready
+<!-- TODO: Fix iframe — connection error before the env’s running process is ready -->
+<!-- Add nextjs server output so we can see error when we edit code in the snippets - maybe we want to add this output globally, to every editor, or to iframe? -->
 <Iframe
   port={3000}
 />
-// Add nextjs server output so we can see error when we edit code in the snippets - maybe we want to add this output globally, to every editor, or to iframe?

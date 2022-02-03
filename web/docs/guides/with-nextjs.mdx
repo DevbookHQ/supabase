@@ -6,8 +6,8 @@ description: Learn how to use Supabase in your Next App.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import { Iframe } from '@devbookhq/ui';
 import Editor, { Language } from '../../src/components/DevbookEditor';
+import Iframe from '../../src/components/DevbookIframe';
 import * as snippets from '../../src/data/codeSnippets';
 
 ## Intro 
@@ -210,8 +210,7 @@ npm run dev
 And then open the browser to [localhost:3000](http://localhost:3000) and you should see the completed app.
 
 <Iframe
-  url={`https://3000-default_9c03f124-${window.sessionStorage.getItem('dbk_sdk_session_id')}.o.usedevbook.com`}
-  height={350}
+  port={3000}
 />
 
 

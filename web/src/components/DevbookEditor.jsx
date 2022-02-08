@@ -13,10 +13,9 @@ import {
   Editor as DevbookEditor,
   Output,
 } from '@devbookhq/ui'
-
 export { Language } from '@devbookhq/ui'
 
-export default function Editor({
+function Editor({
   language,
   initialSQL,
   filepath,
@@ -86,3 +85,5 @@ export default function Editor({
     </div>
   )
 }
+
+export default Editor

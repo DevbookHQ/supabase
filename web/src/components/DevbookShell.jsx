@@ -17,7 +17,7 @@ import {
 
 export { Language } from '@devbookhq/ui'
 
-export default function DevbookShell({
+function DevbookShell({
   command: initialCommand,
   autorun = false,
 }) {
@@ -55,3 +55,5 @@ export default function DevbookShell({
     </div>
   )
 }
+
+export default DevbookShell

@@ -10,7 +10,7 @@ import {
 
 export { Language } from '@devbookhq/ui'
 
-export default function DevbookVMFile({
+function DevbookVMFile({
   filepath,
   code: initialCode,
 }) {
@@ -36,3 +36,5 @@ export default function DevbookVMFile({
     <div />
   )
 }
+
+export default DevbookVMFile

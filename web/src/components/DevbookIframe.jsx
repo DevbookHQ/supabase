@@ -3,8 +3,8 @@ import React from 'react'
 import { Iframe } from '@devbookhq/ui'
 import { useDevbook, Env } from '@devbookhq/sdk'
 
-export default function DevbookIframe({ port }) {
-  const { url } = useDevbook({ env: Env.Supabase, port })
+function DevbookIframe({ port, env }) {
+  const { url } = useDevbook({ env, port })
 
   return (
     <Iframe
@@ -13,3 +13,5 @@ export default function DevbookIframe({ port }) {
     />
   )
 }
+
+export default DevbookIframe

@@ -16,7 +16,7 @@ import {
 
 export { Language } from '@devbookhq/ui'
 
-export default function DevbookVMFileEditor({
+function DevbookVMFileEditor({
   language,
   filepath,
   code: initialCode,
@@ -56,3 +56,5 @@ export default function DevbookVMFileEditor({
     </div>
   )
 }
+
+export default DevbookVMFileEditor

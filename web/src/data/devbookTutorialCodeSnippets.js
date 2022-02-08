@@ -1,17 +1,11 @@
-export const utilsInitSupabase = `
-import { createClient } from '@supabase/supabase-js'
+export const utilsInitSupabase = `import { createClient } from '@supabase/supabase-js'
 
 export const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-)
-`
+  // NEXT_PUBLIC_SUPABASE_URL,
+  // NEXT_PUBLIC_SUPABASE_ANON_KEY,
+)`
 
-// "@supabase/supabase-js": "^1.11.9",
-// "@supabase/ui": "^0.24.2",
-
-export const pagesAPIGetUser = `
-import { supabase } from '../../utils/initSupabase'
+export const pagesAPIGetUser = `import { supabase } from '../../utils/initSupabase'
 
 // Example of how to verify and get user data server-side.
 const getUser = async (req, res) => {
@@ -23,26 +17,22 @@ const getUser = async (req, res) => {
   return res.status(200).json(user)
 }
 
-export default getUser
-`
+export default getUser`
 
-export const pagesAPIAuth = `
-/**
+export const pagesAPIAuth = `/**
  * NOTE: this file is only needed if you're doing SSR (getServerSideProps)!
  */
 import { supabase } from '../../utils/initSupabase'
 
-export default function handler(req, res) {
+export default function handler(req: any, res: any) {
   supabase.auth.api.setAuthCookie(req, res)
-}
-`
+}`
 
-export const pagesProfile = `
-import Link from 'next/link'
+export const pagesProfile = `import Link from 'next/link'
 import { Card, Typography, Space } from '@supabase/ui'
 import { supabase } from '../utils/initSupabase'
 
-export default function Profile({ user }) {
+export default function Profile({ user }: { user: any }) {
   return (
     <div style={{ maxWidth: '420px', margin: '96px auto' }}>
       <Card>
@@ -68,7 +58,7 @@ export default function Profile({ user }) {
   )
 }
 
-export async function getServerSideProps({ req }) {
+export async function getServerSideProps({ req }: { req: any }) {
   const { user } = await supabase.auth.api.getUserByCookie(req)
 
   if (!user) {
@@ -78,17 +68,15 @@ export async function getServerSideProps({ req }) {
 
   // If there is a user, return it.
   return { props: { user } }
-}
-`
+}`
 
-export const pagesIndex = `
-import Link from 'next/link'
+export const pagesIndex = `import Link from 'next/link'
 import useSWR from 'swr'
 import { Auth, Card, Typography, Space, Button, Icon } from '@supabase/ui'
 import { supabase } from '../utils/initSupabase'
 import { useEffect, useState } from 'react'
 
-const fetcher = (url, token) =>
+const fetcher = (url: string, token: string) =>
   fetch(url, {
     method: 'GET',
     headers: new Headers({ 'Content-Type': 'application/json', token }),
@@ -187,14 +175,12 @@ const Index = () => {
   )
 }
 
-export default Index
-`
+export default Index`
 
-export const pagesApp = `
-import { Auth } from '@supabase/ui'
+export const pagesApp = `import { Auth } from '@supabase/ui'
 import { supabase } from '../utils/initSupabase'
 
-export default function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps }: { Component: any, pageProps: any }) {
   return (
     <main className={'dark'}>
       <Auth.UserContextProvider supabaseClient={supabase}>
@@ -202,5 +188,4 @@ export default function MyApp({ Component, pageProps }) {
       </Auth.UserContextProvider>
     </main>
   )
-}
-`
+}`
